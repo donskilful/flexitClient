@@ -56,6 +56,7 @@ function Feed() {
       </div>
       <div>
         {posts?.map?.(post => <Post
+          key={post._id}
           postId={post._id}
           name={post?.user?.name}
           datePosted={moment(post.created).format("MMM Do YY")}
