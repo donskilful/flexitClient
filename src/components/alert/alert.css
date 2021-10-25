@@ -1,0 +1,17 @@
+.alert {
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  text-align: center;
+  color: black;
+  padding: 5px
+}
+
+.success {
+  background-color: green;
+}
+
+.error {
+  background-color: red;
+  color: whitesmoke
+}
