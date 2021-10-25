@@ -8,6 +8,7 @@ import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import ChatOutlinedIcon from "@material-ui/icons/Chat";
 import useAlert from '../../hooks/useAlert'
 import { formatErrorMessage, getToken, getUser } from "../../utils/helpers";
+import { BASE_URL } from "../../config";
 
 function Post({ postId, name, description, datePosted, timePosted }) {
   const [likes, setLikes] = useState([])
@@ -16,7 +17,7 @@ function Post({ postId, name, description, datePosted, timePosted }) {
 
   const getLikes = async () => {
     try {
-      const data = await axios.get(`/like/count/${postId}`, {
+      const data = await axios.get(BASE_URL + `/like/count/${postId}`, {
         headers: {
           authorization: 'Bearer ' + getToken()
         }
@@ -32,7 +33,7 @@ function Post({ postId, name, description, datePosted, timePosted }) {
   const toggleLike = async () => {
     try {
       setLiked(!liked)
-      await axios.post(`/like/like`, { postId }, {
+      await axios.post(BASE_URL + `/like/like`, { postId }, {
         headers: {
           authorization: 'Bearer ' + getToken()
         }

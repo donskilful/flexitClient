@@ -4,6 +4,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import useAlert from "../../hooks/useAlert";
 import { formatErrorMessage, getToken, getUser } from "../../utils/helpers";
 import axios from "axios";
+import { BASE_URL } from "../../config";
 
 const Comment = ({ postId }) => {
   const [comment, setComment] = useState('')
@@ -13,7 +14,7 @@ const Comment = ({ postId }) => {
   const sendComment = async (e) => {
     e.preventDefault()
     try {
-      const data = await axios.post(`/comment/create`, {postId, body: comment} ,{
+      const data = await axios.post(BASE_URL + `/comment/create`, {postId, body: comment} ,{
         headers: {
           authorization: "Bearer " + getToken(),
         },
@@ -27,7 +28,7 @@ const Comment = ({ postId }) => {
 
   const deleteComment = async (id) => {
     try {
-      await axios.delete(`/comment/delete/${id}`, {
+      await axios.delete(BASE_URL + `/comment/delete/${id}`, {
         headers: {
           authorization: "Bearer " + getToken(),
         },
@@ -44,7 +45,7 @@ const Comment = ({ postId }) => {
 
   const getComments = async () => {
     try {
-      const data = await axios.get(`/comment/get/${postId}`, {
+      const data = await axios.get(BASE_URL + `/comment/get/${postId}`, {
         headers: {
           authorization: "Bearer " + getToken(),
         },

@@ -1,0 +1,1 @@
+export const BASE_URL = "https://flexit-server.herokuapp.com/api/v1/"

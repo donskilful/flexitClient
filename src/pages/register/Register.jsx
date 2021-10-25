@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import useAlert from "../../hooks/useAlert";
+import { BASE_URL } from "../../config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ const Login = () => {
     setPassword(passwordRef.current.value);
     setEmail(emailRef.current.value);
     try {
-      await axios.post("auth/register", { email, password });
+      await axios.post(BASE_URL + "auth/register", { email, password });
       showSuccess("Registered Sucessfully")
       history.push("/login");
     } catch ({ response }) {

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { BASE_URL } from "../../config";
 import { formatErrorMessage, getToken } from "../../utils/helpers";
 import {
   createPostFailure,
@@ -16,7 +17,7 @@ import {
 export const getPosts = async (dispatch) => {
   dispatch(getPostsStart());
   try {
-    const res = await axios.get("post/all", {
+    const res = await axios.get(BASE_URL + "post/all", {
       headers: {
         authorization: "Bearer " + getToken(),
       },
@@ -31,7 +32,7 @@ export const getPosts = async (dispatch) => {
 export const createPost = async (post, dispatch, onSuccess, onError) => {
   dispatch(createPostStart());
   try {
-    const res = await axios.post("post/create", {body: post}, {
+    const res = await axios.post(BASE_URL + "post/create", {body: post}, {
       headers: {
         authorization: "Bearer " + getToken(),
       },
@@ -48,7 +49,7 @@ export const createPost = async (post, dispatch, onSuccess, onError) => {
 export const deletePost = async (id, dispatch) => {
   dispatch(deletePostStart());
   try {
-    await axios.delete("/delete/:postId" + id, {
+    await axios.delete(BASE_URL + "/delete/:postId" + id, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
