@@ -26,7 +26,7 @@ const PostReducer = (state, action) => {
       };
     case "CREATE_POST_SUCCESS":
       return {
-        posts: [...state.posts, action.payload],
+        posts: [action.payload, ...state.posts],
         isFetching: false,
         error: false,
       };

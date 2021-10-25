@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../../config";
-import { formatErrorMessage, getToken } from "../../utils/helpers";
+import { formatErrorMessage, getToken, getUser } from "../../utils/helpers";
 import {
   createPostFailure,
   createPostStart,
@@ -38,7 +38,7 @@ export const createPost = async (post, dispatch, onSuccess, onError) => {
       },
     });
     onSuccess("Created Successfully")
-    dispatch(createPostSuccess(res.data));
+    dispatch(createPostSuccess({...res.data.data, user: getUser()}));
   } catch (error) {
     onError(formatErrorMessage(error.response.data))
     dispatch(createPostFailure());
