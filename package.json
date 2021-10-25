@@ -47,5 +47,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000/api/v1/"
+  "proxy": "https://flexit-server.herokuapp.com/api/v1/"
 }
